@@ -40,7 +40,6 @@ font-style: normal;
 	src: url("./fonts/Scaly Sans.otf") format("opentype");
 	font-weight: normal;
 }
-
 .eaves {
   font-family: "Mr Eaves Small Caps", serif;
 }
@@ -63,9 +62,29 @@ font-style: normal;
   font-family: 'Scaly Sans', serif;
 }
 
+* {
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
 /* ===============NAV============= */
 nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+
+/* ===============MONSTER LIST============= */
+.monsterList {
+	overflow: scroll;
+	list-style: none;
+	width: 30%;
+	height: 100vh;
+}
+
+/* ===============MAIN/CONTAINER============= */
+.container {
+	border: 1px red solid;
+	display: flex;
+	flex-flow: row nowrap;
 }
