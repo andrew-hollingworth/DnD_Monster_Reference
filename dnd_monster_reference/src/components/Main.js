@@ -1,35 +1,74 @@
 import React from 'react'
 import axios from 'axios'
+import Header from './Header'
 import Info from './Info'
 import List from './List'
+import About from './About'
+import { Switch, Route } from 'react-router-dom'
 
 class Main extends React.Component {
   state = {
-    activeMonster: {}
+    activeMonster: {},
+    url: 'http://www.dnd5eapi.co/api/monsters',
+    monsterList: [],
+    value: '',
+    matched: []
   }
-  handleClick = async (url) => {
+
+// SEARCH FILTER
+  handleSearchChange = (e) => {
+    console.log('input',e.target.value)
+    let value = e.target.value
+    this.setState(prevState => ({
+      value
+    }))
+  }
+
+// MONSTER SELECTION FROM LIST/NEW API CALL
+  handleMonsterClick = async (url) => {
     let data  = await axios (url)
-    console.log('this is click data.data', data.data);
     localStorage.setItem(data.data.index, JSON.stringify(data))
     let monster = {}
     let keys = Object.keys(data.data)
     keys.map( (k) => {
       if (data.data[k]) { monster[k] = data.data[k]}
     })
-    console.log('monster', monster);
     this.setState(prevState => ({
       activeMonster: monster
-}))
+    }))
+  }
+
+// MONSTER LIST API CALL
+  getMonsters = async () => {
+    let data  = await axios (this.state.url)
+    this.setState(prevState => ({
+    monsterList: data.data.results
+    }))
+  }
+
+  componentDidMount() {
+    this.getMonsters()
   }
 
   render () {
+    console.log(this.state.matched);
     return (
+    <React.Fragment>
+      <Header handleChange={this.handleSearchChange}/>
       <div className='container'>
         <List
-          handleClick={this.handleClick}/>
-        <Info
-          activeMonster={this.state.activeMonster}/>
+          handleClick={this.handleMonsterClick}
+          monsterList={this.state.monsterList}
+          value={this.state.value}/>
+        <Switch>
+          <Route path='/about' component={About}/>
+          <Route exact path='/'
+              render={() =>
+                <Info {...this.state.activeMonster}
+                  activeMonster={this.state.activeMonster}/>}/>
+        </Switch>
       </div>
+    </React.Fragment>
     )
   }
 }

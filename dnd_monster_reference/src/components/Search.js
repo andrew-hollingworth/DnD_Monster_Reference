@@ -1,16 +1,15 @@
 import React from 'react'
 
-function Search() {
+function Search(props) {
+  console.log('search props', props);
   return (
     <form>
         <input
           type='text'
           placeholder='Type in a Monster'
           className='eaves'
+          onChange={props.handleChange}
           />
-        <input
-          type='submit'
-          value='Monster' />
       </form>
   )
 }
