@@ -8,7 +8,7 @@ import { Switch, Route } from 'react-router-dom'
 
 class Main extends React.Component {
   state = {
-    activeMonster: {},
+    activeMonster: null,
     url: 'http://www.dnd5eapi.co/api/monsters',
     monsterList: [],
     value: '',
