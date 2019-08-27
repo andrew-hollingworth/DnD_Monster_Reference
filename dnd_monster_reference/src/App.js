@@ -4,7 +4,7 @@ import Main from './components/Main'
 
 function App() {
   return (
-    <main className='gradient shadow'>
+    <main className='gradient bg shadow'>
       <Main />
     </main>
   );

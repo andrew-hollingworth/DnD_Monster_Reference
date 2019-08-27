@@ -25,11 +25,6 @@ font-weight: bold;
 font-style: normal;
 }
 @font-face {
-	font-family: "Scaly Sans Caps";
-	src: url("./fonts/Scaly Sans Caps.otf") format("opentype");
-	font-weight: normal;
-}
-@font-face {
 	font-family: "Scaly Sans Italic";
 	src: url("./fonts/Scaly Sans Italic.otf") format("opentype");
 	font-weight: normal;
@@ -38,6 +33,11 @@ font-style: normal;
 @font-face {
 	font-family: "Scaly Sans";
 	src: url("./fonts/Scaly Sans.otf") format("opentype");
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Zatanna Misdirection";
+	src: url("./fonts/Zatanna Misdirection.otf") format("opentype");
 	font-weight: normal;
 }
 .eaves {
@@ -53,16 +53,17 @@ font-style: normal;
 .scaly-b {
   font-family: 'Scaly Sans Bold', serif;
 }
-.scaly-caps {
-  font-family: 'Scaly Sans Caps', serif;
-}
 .scaly-i {
   font-family: 'Scaly Sans Italic', serif;
 }
 .scaly {
   font-family: 'Scaly Sans', serif;
 }
+.zatanna {
+	font-family: 'Zatanna Misdirection', sans-serif;
+}
 
+/* ===============MAIN/CONTAINER============= */
 * {
 	box-sizing: border-box;
 	color: rgb(142, 6, 0);
@@ -70,6 +71,22 @@ font-style: normal;
 
 .black-text {
 	color: black;
+}
+
+.container {
+	display: flex;
+}
+
+.bg {
+	background-image: url('./components/bg-texture.jpg');
+	background-size: cover;
+}
+
+.gradient {
+	background-image:
+		linear-gradient(
+			rgba(232, 210, 148, 0.3), rgba(232, 210, 148, 0.5)),
+			url('./components/bg-texture.jpg');
 }
 
 .shadow {
@@ -84,46 +101,49 @@ nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-	align-items: center;
+	align-items: baseline;
 	height: 12vh;
+	padding: 0 0 1em 0;
 }
 
 .title {
-	font-size: 2em;
-	margin: 1em 1em 0 0;
+	font-size: 3em;
+	font-weight: lighter;
+	margin: 0;
 	text-align: center;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
 }
 
 form {
 	width: 30vw;
 	text-align: center;
-	margin-top: 1.5em;
 }
 
 input{
-	background-color: rgb(237, 219, 157);
+	background-color: rgba(237, 219, 157, 0.3);
 	padding: 0;
 }
 
 .search {
-	border-left: 2px solid rgb(178, 139, 62);
-	border-top: 2px solid rgb(178, 139, 62);
-	border-right: 2px solid rgb(219, 191, 112);
-	border-bottom: 2px solid rgb(219, 191, 112);
-	border-radius: .3em;
+	border: none;
+	border-top: 1px solid rgb(142, 6, 0);
+	border-bottom: 1px solid rgb(142, 6, 0);
 	font-size: 1.2em;
-	line-height: 2em;
+	line-height: 3em;
 	margin: 0.1em;
 	width: 80%;
+	text-align: center;
 }
 
 .search::placeholder {
+	font-size: 1.2em;
 	color: rgb(142, 6, 0);
 	padding: 0 0.4em
 }
 
-a {
-	font-family: 'Scaly Sans Caps', sans-serif;
+h4 {
+	margin-right: 2em;
+	font-size: 1.5em;
 }
 
 /* ===============MONSTER LIST============= */
@@ -136,11 +156,11 @@ a {
 }
 
 button {
-	border: 1px solid rgb(219, 191, 112);
-	border-radius: .5em;
+	border: none;
+	border-top: 1px solid rgb(142, 6, 0);
 	font-size: 1.2em;
 	line-height: 2em;
-	margin: 0.1em;
+	margin: 0;
 	padding: .5em;
 	text-align: center;
 	width: 80%;
@@ -155,22 +175,7 @@ button:active {
 }
 
 .button-gradient {
-	background-color: rgb(248, 244, 216);
-	background-image:
-		linear-gradient(
-      rgb(237, 219, 157), rgb(217, 189, 111)
-    )
-}
-
-/* ===============MAIN/CONTAINER============= */
-.container {
-	display: flex;
-}
-
-.gradient {
-	background-image:
-	  linear-gradient(
-			rgb(232, 210, 148), rgb(248, 244, 216));
+	background-color: rgba(227, 202, 145, 0.2);
 }
 
 /* ===============INFO STYLING============= */
@@ -204,4 +209,17 @@ button:active {
 
 .action {
 	border-bottom: 1px solid rgb(142, 6, 0);
+}
+
+/* ===============ABOUT STYLING============= */
+.about {
+	display: flex;
+	flex-flow: column;
+	overflow-y: scroll;
+	width: 65vw;
+	height: 88vh;
+}
+
+.about-header {
+	font-size: 2em;
 }

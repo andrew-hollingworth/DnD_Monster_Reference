@@ -6,8 +6,8 @@ function Header(props) {
   return (
     <nav>
       <Search handleChange={props.handleChange}/>
-      <h1 className='eaves title'>Dungeons & Dragons<br/>Monster Reference</h1>
-      <h4><Link to='/about'>About This Tool</Link></h4>
+      <h1 className='nodesto title'>Dungeons & Dragons Monster Reference</h1>
+      <h4><Link className='eaves' to='/about'>About</Link></h4>
     </nav>
   )
 }

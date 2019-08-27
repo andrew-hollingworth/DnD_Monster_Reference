@@ -5,7 +5,7 @@ function Info(props) {
     <>
     {props.activeMonster && (
       <div className='info-container'>
-        <h1 className='eaves sticky'>{props.activeMonster.name}</h1>
+        <h1 className='eaves'>{props.activeMonster.name}</h1>
         <p className='scaly-i black-text'>{props.activeMonster.size}  {props.activeMonster.type} {props.activeMonster.subtype && (`(${props.activeMonster.subtype})`)}, {props.activeMonster.alignment}</p>
         <div className='divider'></div>
         <section>
