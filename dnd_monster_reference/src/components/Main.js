@@ -17,7 +17,6 @@ class Main extends React.Component {
 
 // SEARCH FILTER
   handleSearchChange = (e) => {
-    console.log('input',e.target.value)
     let value = e.target.value
     this.setState(prevState => ({
       value
@@ -51,7 +50,6 @@ class Main extends React.Component {
   }
 
   render () {
-    console.log(this.state.matched);
     return (
     <React.Fragment>
       <Header handleChange={this.handleSearchChange}/>

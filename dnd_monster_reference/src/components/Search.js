@@ -6,8 +6,8 @@ function Search(props) {
     <form>
         <input
           type='text'
-          placeholder='Type in a Monster'
-          className='eaves'
+          placeholder='Search'
+          className='eaves search'
           onChange={props.handleChange}
           />
       </form>

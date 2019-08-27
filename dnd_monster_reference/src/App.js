@@ -4,7 +4,7 @@ import Main from './components/Main'
 
 function App() {
   return (
-    <main>
+    <main className='gradient'>
       <Main />
     </main>
   );
