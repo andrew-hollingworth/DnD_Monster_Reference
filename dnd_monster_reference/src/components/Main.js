@@ -59,7 +59,7 @@ class Main extends React.Component {
           monsterList={this.state.monsterList}
           value={this.state.value}/>
         <Switch>
-          <Route path='/about' component={About}/>
+          <Route path='/about' component={ About }/>
           <Route exact path='/'
               render={() =>
                 <Info {...this.state.activeMonster}
