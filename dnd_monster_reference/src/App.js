@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import './dist/hamburgers.css'
 import Main from './components/Main'
 
 function App() {
   return (
-    <main className='gradient bg shadow'>
+    <main className='background'>
       <Main />
     </main>
   );

@@ -6,13 +6,14 @@ function List(props) {
     return d.name.toLowerCase().includes(props.value.toLowerCase())
   })
   let monsterList = matched.map((d, i) => {
-      return <li key={i} ><Link to='/'><button className= 'eaves button-gradient' onClick={() => props.handleClick(d.url)}>{d.name}</button></Link></li>
+      return <li key={i} ><Link to='/'><button className= 'eaves monster-button' onClick={() => props.handleClick(d.url)}>{d.name}</button></Link></li>
     })
   return(
-    <div className='monsterList eaves'>
-      <h2>Monster List</h2>
-      {monsterList}
-    </div>
+    <React.Fragment>
+      <div className= 'monsterList eaves'>
+        <div>{monsterList}</div>
+      </div>
+    </React.Fragment>
   )}
 
 export default List

@@ -138,9 +138,9 @@ function Info(props) {
           <h2 className='scaly action'>Actions</h2>
           {props.activeMonster.actions &&
             (props.activeMonster.actions.map( (action, i) => (
-            <>
-              <p key={i} className='scaly black-text'><span className='scaly-b black-text'>{action.name}</span> {action.desc}</p>
-            </>
+            <React.Fragment key={i}>
+              <p className='scaly black-text'><span className='scaly-b black-text'>{action.name}</span> {action.desc}</p>
+            </React.Fragment>
           )))}
         </section>
         {/* REACTIONS =========== CONDITIONAL*/}

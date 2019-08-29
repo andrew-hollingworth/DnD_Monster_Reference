@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Search(props) {
-  console.log('search props', props);
   return (
     <form>
         <input

@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import Header from './Header'
 import Info from './Info'
-import List from './List'
+import ListCollapse from './ListCollapse'
 import About from './About'
+import Encounter from './Encounter'
 import { Switch, Route } from 'react-router-dom'
 
 class Main extends React.Component {
@@ -12,7 +12,8 @@ class Main extends React.Component {
     url: 'http://www.dnd5eapi.co/api/monsters',
     monsterList: [],
     value: '',
-    matched: []
+    matched: [],
+    encounter: [],
   }
 
 // SEARCH FILTER
@@ -30,10 +31,17 @@ class Main extends React.Component {
     let monster = {}
     let keys = Object.keys(data.data)
     keys.map( (k) => {
-      if (data.data[k]) { monster[k] = data.data[k]}
+        if (data.data[k]) { monster[k] = data.data[k]}
     })
     this.setState(prevState => ({
       activeMonster: monster
+    }))
+  }
+
+  handleEncounterClick = (e) => {
+    localStorage.setItem(this.state.activeMonster._id, JSON.stringify(this.state.activeMonster))
+    this.setState(prevState => ({
+      encounter: [...prevState, this.state.activeMonster]
     }))
   }
 
@@ -52,14 +60,17 @@ class Main extends React.Component {
   render () {
     return (
     <React.Fragment>
-      <Header handleChange={this.handleSearchChange}/>
       <div className='container'>
-        <List
-          handleClick={this.handleMonsterClick}
-          monsterList={this.state.monsterList}
-          value={this.state.value}/>
+         <ListCollapse
+           handleChange={this.handleSearchChange}
+           handleClick={this.handleMonsterClick}
+           monsterList={this.state.monsterList}
+           value={this.state.value} />
         <Switch>
           <Route path='/about' component={ About }/>
+          <Route path='/encounter' render={() =>
+            <Encounter {...this.state.encounter}
+              encounter={this.state.encounter}/>}/>
           <Route exact path='/'
               render={() =>
                 <Info {...this.state.activeMonster}
