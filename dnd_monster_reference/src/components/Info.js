@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 function Info(props) {
   return (
     <>
     {props.activeMonster && (
       <div className='info-container'>
-        <h1 className='eaves'>{props.activeMonster.name}</h1>
+        <div className='name'>
+          <h1 className='eaves'>{props.activeMonster.name}</h1>
+          <button className = 'encounter-button' onClick={() => props.handleEncounterClick()}><i class="fas fa-dragon"><span className='eaves button-text'> Add to Encounter</span></i></button>
+        </div>
         <p className='scaly-i black-text'>{props.activeMonster.size}  {props.activeMonster.type} {props.activeMonster.subtype && (`(${props.activeMonster.subtype})`)}, {props.activeMonster.alignment}</p>
         <div className='divider'></div>
         <section>

@@ -15,7 +15,6 @@ class Main extends React.Component {
     url: 'http://www.dnd5eapi.co/api/monsters',
     monsterList: [],
     value: '',
-    matched: [],
     encounter: [],
   }
 
@@ -30,7 +29,6 @@ class Main extends React.Component {
 // MONSTER SELECTION FROM LIST/NEW API CALL
   handleMonsterClick = async (url) => {
     let data  = await axios (url)
-    localStorage.setItem(data.data.index, JSON.stringify(data))
     let monster = {}
     let keys = Object.keys(data.data)
     keys.map( (k) => {
@@ -42,10 +40,10 @@ class Main extends React.Component {
   }
 
   // ENCOUNTER BUILDER (WIP)
-  handleEncounterClick = (e) => {
+  handleEncounterClick = () => {
     localStorage.setItem(this.state.activeMonster._id, JSON.stringify(this.state.activeMonster))
-    this.setState(prevState => ({
-      encounter: [...prevState, this.state.activeMonster]
+    this.setState(() => ({
+      encounter: [...this.state.encounter, this.state.activeMonster]
     }))
   }
 
@@ -74,6 +72,7 @@ class Main extends React.Component {
           handleChange={this.handleSearchChange}/>
         <List
           handleClick={this.handleMonsterClick}
+
           monsterList={this.state.monsterList}
           value={this.state.value}/>
         <Switch>
@@ -82,10 +81,11 @@ class Main extends React.Component {
             <Encounter {...this.state.encounter}
               encounter={this.state.encounter}/>}/>
           <Route exact path='/'
-              render={() =>
-                <Info {...this.state.activeMonster}
-                  activeMonster={this.state.activeMonster}
-                  abilityModifier={this.abilityModifier}/>}/>
+            render={() =>
+              <Info {...this.state.activeMonster}
+                activeMonster={this.state.activeMonster}
+                abilityModifier={this.abilityModifier}
+                handleEncounterClick ={this.handleEncounterClick}/>}/>
         </Switch>
       </div>
         <ListCollapse

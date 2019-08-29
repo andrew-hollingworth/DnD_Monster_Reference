@@ -174,7 +174,7 @@ input{
 	text-align: center;
 }
 
-.tton:hover {
+.monster-button:hover {
   box-shadow: 0 2px 3px 0 rgba(69, 51, 2,0.24), 0 5px 7px 0 rgba(69, 51, 2,0.19);
 }
 
@@ -214,6 +214,30 @@ input{
 
 .str {
 	margin: 0 1em 0 0;
+}
+
+.name {
+	display: flex;
+	justify-content: space-between;
+	align-content: baseline;
+}
+
+.encounter-button {
+	border: none;
+	border-top: 1px solid rgb(142, 6, 0);
+	border-bottom: 1px solid rgb(142, 6, 0);
+	background-color: transparent;
+	margin-bottom: 0.5rem;
+}
+
+.button-text {
+	font-size: 1.2em;
+	font-weight: 400;
+	line-height: 1.2em;
+}
+
+.encounter-button:hover {
+	box-shadow: 0 2px 3px 0 rgba(69, 51, 2,0.24), 0 5px 7px 0 rgba(69, 51, 2,0.19);
 }
 
 /* DIVIDERS */
