@@ -7,7 +7,7 @@ import NavLinks from './NavLinks'
 function ListCollapse(props) {
   return (
   <>
-    <Navbar defaultExpanded expand="md">
+    <Navbar defaultExpanded expand="sm">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Brand className='nodesto title'>Dungeons & Dragons Monster Reference</Navbar.Brand>
       <Navbar.Collapse id="responsive-navbar-nav">
