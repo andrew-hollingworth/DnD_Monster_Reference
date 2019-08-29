@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-    <div className='about'>
+    <div className='info-container'>
       <h1 className='eaves'>About the Project</h1>
       <p className='zatanna'>This is a lightweight Monster Manual for use with Dungeons & Dragons 5th Edition. All content is courtesy of Wizards of the Coast under terms of their <a className='inline-link' href='https://dnd.wizards.com/articles/features/systems-reference-document-srd'>SRD V5.1</a></p>
       <h1 className='eaves'>About the Developer</h1>

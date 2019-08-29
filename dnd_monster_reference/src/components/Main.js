@@ -2,6 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import Info from './Info'
 import ListCollapse from './ListCollapse'
+import NavLinks from './NavLinks'
+import Search from './Search'
+import List from './List'
 import Desktop from './Desktop'
 import About from './About'
 import Encounter from './Encounter'
@@ -61,17 +64,32 @@ class Main extends React.Component {
   render () {
     return (
     <React.Fragment>
-      <Desktop
-        handleChange={this.handleSearchChange}
-        handleClick={this.handleMonsterClick}
-        monsterList={this.state.monsterList}
-        value={this.state.value} />
-      <div className='container'>
-         <ListCollapse
-           handleChange={this.handleSearchChange}
-           handleClick={this.handleMonsterClick}
-           monsterList={this.state.monsterList}
-           value={this.state.value} />
+      <div className='desktop'>
+        <h1 className='nodesto title'>Dungeons & Dragons Monster Reference</h1>
+        <NavLinks />
+        <Search
+          handleChange={this.handleSearchChange}/>
+        <List
+          handleClick={this.handleMonsterClick}
+          monsterList={this.state.monsterList}
+          value={this.state.value}/>
+        <Switch>
+          <Route path='/about' component={ About }/>
+          <Route path='/encounter' render={() =>
+            <Encounter {...this.state.encounter}
+              encounter={this.state.encounter}/>}/>
+          <Route exact path='/'
+              render={() =>
+                <Info {...this.state.activeMonster}
+                  activeMonster={this.state.activeMonster}/>}/>
+        </Switch>
+      </div>
+        <ListCollapse
+          handleChange={this.handleSearchChange}
+          handleClick={this.handleMonsterClick}
+          monsterList={this.state.monsterList}
+          value={this.state.value} />
+      <div className='mobile'>
         <Switch>
           <Route path='/about' component={ About }/>
           <Route path='/encounter' render={() =>

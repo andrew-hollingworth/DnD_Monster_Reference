@@ -139,7 +139,7 @@ form {
 }
 
 input{
-	background-color: rgba(237, 219, 157, 0.5);
+	background-color: rgba(237, 219, 157, 0.2);
 	padding: 0;
 }
 
@@ -174,7 +174,7 @@ input{
 	text-align: center;
 }
 
-.monster-button:hover {
+.tton:hover {
   box-shadow: 0 2px 3px 0 rgba(69, 51, 2,0.24), 0 5px 7px 0 rgba(69, 51, 2,0.19);
 }
 
@@ -272,8 +272,8 @@ input{
 	}
 	.desktop {
 		display: grid;
-		grid-template-columns: repeat(6, auto);
-		 grid-template-rows: repeat(6, auto);
+		grid-template-columns: repeat(6, 1fr);
+		 grid-template-rows: repeat(3, auto) repeat(3, 1fr);
 		 grid-template-areas:
 			 "title title title title title title"
 			 "links links links links links links"
@@ -291,10 +291,23 @@ input{
 	.search-box {
 		grid-area: search;
 	}
-	.monsterList {
-		grid-area: list;
+	.search {
+		width: 90%;
 	}
-	.container {
+	.monsterList {
+		border-left: none;
+		grid-area: list;
+		max-height: 75vh;
+		height: 100%;
+	}
+	.monster-button {
+		width: 90%;
+	}
+	.info-container {
 		grid-area: info;
+		max-height: 86vh;
+	}
+	main{
+		height: 100vh;
 	}
 }

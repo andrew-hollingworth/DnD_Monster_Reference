@@ -2,7 +2,9 @@ import React from 'react'
 
 function Encounter() {
   return (
-    <h1>Encounter</h1>
+    <div className='info-container'>
+      <h1 className='eaves'>Encounters</h1>
+    </div>
   )
 }
 
