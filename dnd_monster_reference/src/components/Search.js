@@ -2,7 +2,7 @@ import React from 'react'
 
 function Search(props) {
   return (
-    <form>
+    <form className='search-box'>
         <input
           type='text'
           placeholder='Search'

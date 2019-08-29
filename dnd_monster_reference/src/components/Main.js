@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Info from './Info'
 import ListCollapse from './ListCollapse'
+import Desktop from './Desktop'
 import About from './About'
 import Encounter from './Encounter'
 import { Switch, Route } from 'react-router-dom'
@@ -60,6 +61,11 @@ class Main extends React.Component {
   render () {
     return (
     <React.Fragment>
+      <Desktop
+        handleChange={this.handleSearchChange}
+        handleClick={this.handleMonsterClick}
+        monsterList={this.state.monsterList}
+        value={this.state.value} />
       <div className='container'>
          <ListCollapse
            handleChange={this.handleSearchChange}
