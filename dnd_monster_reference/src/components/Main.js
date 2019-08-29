@@ -41,6 +41,7 @@ class Main extends React.Component {
     }))
   }
 
+  // ENCOUNTER BUILDER (WIP)
   handleEncounterClick = (e) => {
     localStorage.setItem(this.state.activeMonster._id, JSON.stringify(this.state.activeMonster))
     this.setState(prevState => ({
@@ -48,18 +49,21 @@ class Main extends React.Component {
     }))
   }
 
-// MONSTER LIST API CALL
+  // STAT MODIFIER CALC
+  abilityModifier = (input) => {
+    return (-5 + Math.floor(input/2))
+  }
+
+  // MONSTER LIST API CALL
   getMonsters = async () => {
     let data  = await axios (this.state.url)
     this.setState(prevState => ({
-    monsterList: data.data.results
+      monsterList: data.data.results
     }))
   }
-
   componentDidMount() {
     this.getMonsters()
   }
-
   render () {
     return (
     <React.Fragment>
@@ -80,7 +84,8 @@ class Main extends React.Component {
           <Route exact path='/'
               render={() =>
                 <Info {...this.state.activeMonster}
-                  activeMonster={this.state.activeMonster}/>}/>
+                  activeMonster={this.state.activeMonster}
+                  abilityModifier={this.abilityModifier}/>}/>
         </Switch>
       </div>
         <ListCollapse

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Info(props) {
   return (
@@ -17,27 +17,27 @@ function Info(props) {
         <section className='stats'>
           <div className='indiv-stat str scaly'>
             <p className='scaly-b'>STR</p>
-            <p>{props.activeMonster.strength}</p>
+            <p>{props.activeMonster.strength} ({Math.floor( (props.activeMonster.strength / 2)) - 5})</p>
           </div>
           <div className='indiv-stat scaly'>
             <p className='scaly-b'>DEX</p>
-            <p>{props.activeMonster.dexterity}</p>
+            <p>{props.activeMonster.dexterity} ({Math.floor( (props.activeMonster.dexterity / 2)) - 5})</p>
           </div>
           <div className='indiv-stat scaly'>
             <p className='scaly-b'>CON</p>
-            <p>{props.activeMonster.constitution}</p>
+            <p>{props.activeMonster.constitution} ({Math.floor( (props.activeMonster.constitution / 2)) - 5})</p>
           </div>
           <div className='indiv-stat scaly'>
             <p className='scaly-b'>INT</p>
-            <p>{props.activeMonster.intelligence}</p>
+            <p>{props.activeMonster.intelligence} ({Math.floor( (props.activeMonster.intelligence / 2)) - 5})</p>
           </div>
           <div className='indiv-stat scaly'>
             <p className='scaly-b'>WIS</p>
-            <p>{props.activeMonster.wisdom}</p>
+            <p>{props.activeMonster.wisdom} ({Math.floor( (props.activeMonster.wisdom / 2)) - 5})</p>
           </div>
           <div className='indiv-stat scaly'>
             <p className='scaly-b'>CHA</p>
-            <p>{props.activeMonster.charisma}</p>
+            <p>{props.activeMonster.charisma} ({Math.floor( (props.activeMonster.charisma / 2)) - 5})</p>
           </div>
         </section>
         <div className='divider'></div>

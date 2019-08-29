@@ -1,6 +1,5 @@
 {
   "name": "dnd_monster_reference",
-  "homepage": "https://andrew-hollingworth.github.io/DnD_Monster_Reference",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
