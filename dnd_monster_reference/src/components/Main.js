@@ -78,11 +78,11 @@ class Main extends React.Component {
         <Switch>
           <Route path='/about' component={ About }/>
           <Route path='/encounter' render={() =>
-            <Encounter {...this.state.encounter}
+            <Encounter
               encounter={this.state.encounter}/>}/>
           <Route exact path='/'
             render={() =>
-              <Info {...this.state.activeMonster}
+              <Info
                 activeMonster={this.state.activeMonster}
                 abilityModifier={this.abilityModifier}
                 handleEncounterClick ={this.handleEncounterClick}/>}/>
