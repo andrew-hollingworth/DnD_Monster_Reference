@@ -139,27 +139,31 @@ form {
 }
 
 input{
-	background-color: rgba(237, 219, 157, 0.2);
+	background-color: transparent;
 	padding: 0;
 }
 
 .search-box {
+	background-color: rgba(237, 219, 157, 0.4);
+	border: 1px solid rgb(142, 6, 0);
+	border-radius: 5px;
+	margin: 0.2em auto;
+	padding-left: 0.3em;
+	text-align: center;
+	width: 90%;
 }
 
 .search {
 	border: none;
-	border-top: 1px solid rgb(142, 6, 0);
-	border-bottom: 1px solid rgb(142, 6, 0);
 	font-size: 1.2em;
 	line-height: 3em;
 	margin: 0.1em;
-	text-align: center;
-	width: 80%;
+	text-align: left;
 }
 
 .search::placeholder {
 	font-size: 1.2em;
-	color: rgb(142, 6, 0);
+	color: rgba(142, 6, 0, 0.6);
 	padding: 0 0.4em
 }
 
