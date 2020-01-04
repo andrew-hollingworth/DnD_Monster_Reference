@@ -18,25 +18,29 @@ class Main extends React.Component {
     encounter: [],
   }
 
-// SEARCH FILTER
+  // SEARCH FILTER
   handleSearchChange = (e) => {
-    let value = e.target.value
+    const value = e.target.value
     this.setState(prevState => ({
-      value
-    }))
+      value,
+    }));
   }
 
-// MONSTER SELECTION FROM LIST/NEW API CALL
+  // MONSTER SELECTION FROM LIST/NEW API CALL
+
   handleMonsterClick = async (url) => {
-    let data  = await axios (url)
-    let monster = {}
-    let keys = Object.keys(data.data)
-    keys.map( (k) => {
-        if (data.data[k]) { monster[k] = data.data[k]}
-    })
+    const data = await axios(url);
+    console.log('data', data)
+    const monster = {};
+    const keys = Object.keys(data.data);
+    console.log('keys', keys);
+    keys.map((k) => {
+      if (data.data[k]) { monster[k] = data.data[k]; }
+    });
+    console.log('monster', monster);
     this.setState(prevState => ({
-      activeMonster: monster
-    }))
+      activeMonster: monster,
+    }));
   }
 
   // ENCOUNTER BUILDER (WIP)
@@ -49,12 +53,12 @@ class Main extends React.Component {
 
   // STAT MODIFIER CALC
   abilityModifier = (input) => {
-    return (-5 + Math.floor(input/2))
+    return (-5 + Math.floor(input / 2))
   }
 
   // MONSTER LIST API CALL
   getMonsters = async () => {
-    let data  = await axios (this.state.url)
+    let data = await axios(this.state.url)
     this.setState(prevState => ({
       monsterList: data.data.results
     }))
@@ -62,50 +66,50 @@ class Main extends React.Component {
   componentDidMount() {
     this.getMonsters()
   }
-  render () {
+  render() {
     return (
-    <React.Fragment>
-      <div className='desktop'>
-        <h1 className='nodesto title'>Dungeons & Dragons Monster Reference</h1>
-        <NavLinks />
-        <Search
-          handleChange={this.handleSearchChange}/>
-        <List
-          handleClick={this.handleMonsterClick}
+      <React.Fragment>
+        <div className='desktop'>
+          <h1 className='nodesto title'>Dungeons & Dragons Monster Reference</h1>
+          <NavLinks />
+          <Search
+            handleChange={this.handleSearchChange} />
+          <List
+            handleClick={this.handleMonsterClick}
 
-          monsterList={this.state.monsterList}
-          value={this.state.value}/>
-        <Switch>
-          <Route path='/about' component={ About }/>
-          <Route path='/encounter' render={() =>
-            <Encounter
-              encounter={this.state.encounter}/>}/>
-          <Route exact path='/'
-            render={() =>
-              <Info
-                activeMonster={this.state.activeMonster}
-                abilityModifier={this.abilityModifier}
-                handleEncounterClick ={this.handleEncounterClick}/>}/>
-        </Switch>
-      </div>
+            monsterList={this.state.monsterList}
+            value={this.state.value} />
+          <Switch>
+            <Route path='/about' component={About} />
+            <Route path='/encounter' render={() =>
+              <Encounter
+                encounter={this.state.encounter} />} />
+            <Route exact path='/'
+              render={() =>
+                <Info
+                  activeMonster={this.state.activeMonster}
+                  abilityModifier={this.abilityModifier}
+                  handleEncounterClick={this.handleEncounterClick} />} />
+          </Switch>
+        </div>
         <ListCollapse
           handleChange={this.handleSearchChange}
           handleClick={this.handleMonsterClick}
           monsterList={this.state.monsterList}
           value={this.state.value} />
-      <div className='mobile'>
-        <Switch>
-          <Route path='/about' component={ About }/>
-          <Route path='/encounter' render={() =>
-            <Encounter {...this.state.encounter}
-              encounter={this.state.encounter}/>}/>
-          <Route exact path='/'
+        <div className='mobile'>
+          <Switch>
+            <Route path='/about' component={About} />
+            <Route path='/encounter' render={() =>
+              <Encounter {...this.state.encounter}
+                encounter={this.state.encounter} />} />
+            <Route exact path='/'
               render={() =>
                 <Info {...this.state.activeMonster}
-                  activeMonster={this.state.activeMonster}/>}/>
-        </Switch>
-      </div>
-    </React.Fragment>
+                  activeMonster={this.state.activeMonster} />} />
+          </Switch>
+        </div>
+      </React.Fragment>
     )
   }
 }
