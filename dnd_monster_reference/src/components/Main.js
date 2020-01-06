@@ -30,15 +30,14 @@ class Main extends React.Component {
 
   handleMonsterClick = async (url) => {
     const data = await axios(url);
-    console.log('data', data)
     const monster = {};
-    const keys = Object.keys(data.data);
-    console.log('keys', keys);
+    const keys = await Object.keys(data.data);
     keys.map((k) => {
-      if (data.data[k]) { monster[k] = data.data[k]; }
+      if (data.data[k]) {
+        monster[k] = data.data[k];
+      }
     });
-    console.log('monster', monster);
-    this.setState(prevState => ({
+    await this.setState(prevState => ({
       activeMonster: monster,
     }));
   }

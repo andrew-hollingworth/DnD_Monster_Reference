@@ -97,33 +97,38 @@ function Info(props) {
                   {props.activeMonster.persuasion && (`Persuasion +${props.activeMonster.persuasion} `)}
                 </p>)}
             {/* DAMAGE VULNERABILITIES (CONDITIONAL) */}
-            {props.activeMonster.damage_vulnerabilities && (
+            {props.activeMonster.damage_vulnerabilities.length > 0 && (
               <p className='scaly'>
                 <span className='scaly-b'>Damage Vulnerabilities</span> {props.activeMonster.damage_vulnerabilities}
               </p>)}
             {/* DAMAGE RESISTANCES (CONDITIONAL) */}
-            {props.activeMonster.damage_resistances && (
+            {props.activeMonster.damage_resistances.length > 0 && (
               <p className='scaly'>
                 <span className='scaly-b'>Damage Resistances</span> {props.activeMonster.damage_resistances}
               </p>)}
             {/* DAMAGE IMMUNITIES (CONDITIONAL) */}
-            {props.activeMonster.damage_immunities && (
+            {props.activeMonster.damage_immunities.length > 0 && (
               <p className='scaly'>
-                <span className='scaly-b'>Damage Immunities</span> {props.activeMonster.damage_immunities}
-              </p>)}
+                <span className='scaly-b'>Damage Immunities </span>
+                <span className='scaly'>{props.activeMonster.damage_immunities.join(', ')}</span>
+              </p>
+            )}
             {/* CONDITION IMMUNITIES (CONDITIONAL) */}
-            {props.activeMonster.condition_immunities && (
+            {props.activeMonster.condition_immunities.length > 0 && (
               <p className='scaly'>
-                <span className='scaly-b'>Condition Immunities</span> {props.activeMonster.condition_immunities}
+                <span className='scaly-b'>Condition Immunities</span> {props.activeMonster.condition_immunities.map((condition, i) => (
+                  <span>{condition.name} </span>
+                ))}
               </p>)}
             {/* SENSES (CONDITIONAL) */}
-            {props.activeMonster.senses && (
+            {Object.keys(props.activeMonster.senses) && (
               <p className='scaly'>
                 <span className='scaly-b'>Senses </span>
                 {props.activeMonster.senses.darkvision && (`Darkvision ${props.activeMonster.senses.darkvision} `)}
                 {props.activeMonster.senses.blindsight && (`Blindsight ${props.activeMonster.senses.blindsight} `)}
                 {props.activeMonster.senses.tremorsense && (`Tremorsense ${props.activeMonster.senses.tremorsense} `)}
                 {props.activeMonster.senses.truesight && (`Truesight ${props.activeMonster.senses.truesight} `)}
+                {props.activeMonster.senses.passive_perception && (`Passive Perception: ${props.activeMonster.senses.passive_perception} `)}
               </p>)}
             {/* LANGUAGES (CONDITIONAL) */}
             {props.activeMonster.languages && (
@@ -174,7 +179,8 @@ function Info(props) {
               ))}
             </section>)}
         </div>
-      )}
+      )
+      }
     </>
   );
 }
