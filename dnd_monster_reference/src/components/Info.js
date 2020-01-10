@@ -99,13 +99,17 @@ function Info(props) {
             {/* DAMAGE VULNERABILITIES (CONDITIONAL) */}
             {props.activeMonster.damage_vulnerabilities.length > 0 && (
               <p className='scaly'>
-                <span className='scaly-b'>Damage Vulnerabilities</span> {props.activeMonster.damage_vulnerabilities}
-              </p>)}
+                <span className='scaly-b'>Damage Vulnerabilities </span>
+                <span className='scaly'>{props.activeMonster.damage_vulnerabilities.join(', ')}</span>
+              </p>
+            )}
             {/* DAMAGE RESISTANCES (CONDITIONAL) */}
             {props.activeMonster.damage_resistances.length > 0 && (
               <p className='scaly'>
-                <span className='scaly-b'>Damage Resistances</span> {props.activeMonster.damage_resistances}
-              </p>)}
+                <span className='scaly-b'>Damage Resistances </span>
+                <span className='scaly'>{props.activeMonster.damage_resistances.join(', ')}</span>
+              </p>
+            )}
             {/* DAMAGE IMMUNITIES (CONDITIONAL) */}
             {props.activeMonster.damage_immunities.length > 0 && (
               <p className='scaly'>
